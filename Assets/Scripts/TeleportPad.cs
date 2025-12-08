@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class TeleportPad : MonoBehaviour, IUsablePad
 {
-    public TeleportPad targetPad;      // 연결된 반대쪽 텔레포트 패드
-    public Transform teleportPoint;    // 도착 위치
+    public TeleportPad targetPad;
+    public Transform teleportPoint;
 
     private bool isCooldown = false;
     public float cooldownTime = 0.3f;
@@ -15,11 +15,9 @@ public class TeleportPad : MonoBehaviour, IUsablePad
 
         Rigidbody rb = player.GetComponentInChildren<Rigidbody>();
 
-        // 텔레포트 이동
         rb.position = targetPad.teleportPoint.position;
         rb.linearVelocity = Vector3.zero;
 
-        // 양쪽 쿨다운 설정
         StartCooldown();
         targetPad.StartCooldown();
     }
